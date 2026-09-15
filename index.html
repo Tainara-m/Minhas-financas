@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aplicativo de gerenciamento financeiro pessoal.">
+    <meta name="keywords" content="finanças, gerenciamento financeiro, orçamento pessoal, controle de gastos">
+    <meta name="author" content="Tainara Martins">
+    <title>Minhas Finanças</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icon/favicon-16x16.png">
+    <link rel="manifest" href="/icon/site.webmanifest">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+<body>
+    <main class="content">
+        <div class="top">
+            <h1 aria-label="Título da Página">Minhas Finanças</h1>
+            <div class="mes-atual">
+                <span class="material-symbols-outlined">arrow_back_ios</span>
+                <h2 id="mes">Setembro/2026</h2>
+                <span class="material-symbols-outlined">arrow_forward_ios</span>
+            </div>
+            <a class="tema-btn" id="theme-toggle" aria-label="Ativar tema escuro">
+                <span class="material-symbols-outlined tema" id="theme-icon" aria-hidden="true">light_mode</span>
+            </a>
+        </div>
+        <section class="resumo-total">
+        <div class="resumo-geral">
+            <div class="saldo-mes-atual">
+                <p class="texto-saldo">Saldo do Mês</p>
+                <p id="saldoMesAtual">R$ 0,00</p>
+            </div>
+            <div class="detalhado">
+                <div class="receita">
+                    <p class="titulo-detalhado">Receita</p>
+                    <p class="valor-detalhado" id="receita">R$ 0,00</p>
+                </div>
+                <div class="despesa">
+                    <p class="titulo-detalhado">Despesa</p>
+                    <p class="valor-detalhado" id="despesa">R$ 0,00</p>
+                </div>
+                <div class="a-pagar">
+                    <p class="titulo-detalhado">A pagar</p>
+                    <p class="valor-detalhado" id="aPagar">R$ 0,00</p>
+                </div>
+            </div>
+        </div>
+    </section>
+        <div class="guias">
+        <nav class="guia-container" role="navigation" aria-label="Navegação entre guias">
+            <a href="#guia1"class="guia selecionada" aria-label="Resumo" onclick="alternarGuia(event, 'guia1')">Resumo</a>
+            <a href="#guia2" class="guia" aria-label="Receitas" onclick="alternarGuia(event, 'guia2')">Receitas</a>
+            <a href="#guia3" class="guia" aria-label="Despesas" onclick="alternarGuia(event, 'guia3')">Despesas</a>
+            <a href="#guia4" class="guia" aria-label="Parcelas" onclick="alternarGuia(event, 'guia4')">Parcelas</a>
+            <a href="#guia5" class="guia" aria-label="Assistente" onclick="alternarGuia(event, 'guia5')">Assistente</a>
+        </nav>
+    </div>
+        <section class="resumo-detalhado conteudo-guia ativa" id="guia1">
+            <div class="parent">
+            <div class="div-receita">
+                <p class="titulo-resumo">Receita</p>
+                <p id="valorResumoReceita" class="valor-resumo-card">R$0,00</p>
+            </div>
+            <div class="div-despesa">
+                <p class="titulo-resumo">Despesa</p>
+                <p id="valorResumoDespesa" class="valor-resumo-card">R$0,00</p>
+             </div>
+            <div class="div-saldo">
+                <p class="titulo-resumo">Saldo</p>
+                <p id="valorResumoSaldo" class="valor-resumo-card">R$0,00</p>
+            </div>
+            <div class="div-a-pagar">
+                <p class="titulo-resumo">A pagar</p>
+                <p id="valorResumoAPagar" class="valor-resumo-card">R$0,00</p>
+            </div>
+            </div>
+            <div class="titulo-guia">
+                <h4>O que compõe as despesas</h4>
+                <p class="descricao">Contas cadastradas + total das parcelas do mês</p>
+                <div class="contas-cadastradas" id="contasCadastradas">
+                    <div class="titulo-cadastradas">Contas Cadastradas</div>
+                    <div id="valorCadastradas" class="valor-resumo">R$0,00</div>
+                </div>
+                <div class="parcelas-cadastradas" id="parcelasCadastradas">
+                    <div class="titulo-cadastradas">Parcelas do Mês</div>
+                    <div id="valorParcelas" class="valor-resumo">R$0,00</div>
+                </div>
+            </div>
+        </section>
+        <section class="receitas conteudo-guia" id="guia2">
+            <div class="titulo-guia">
+            <h4>Receitas</h4>
+                <p class="descricao">Tudo que entra esse mês</p>
+            </div>
+            <div class="tabela-receitas" id="tabelaReceitas">
+                <p class="texto-tabela">Nada por aqui ainda. Adicione o primeiro item abaixo.</p>
+            </div>
+            <form action="" class="entradas" id="entradas">
+                <label for="descricaoReceita">
+                    <input type="text" name="descricao" id="descricaoReceita" placeholder="Ex.: Salário" required>
+                </label>
+                <label for="valorReceita">
+                    <input type="number" name="valor" id="valorReceita" placeholder="Ex.: 1000,00" required>
+                </label>
+                <button class="botao-adicionar" id="adicionarReceita">Adicionar</button>
+            </form>
+        </section>
+        <section class="despesas conteudo-guia" id="guia3">
+            <div class="titulo-guia">
+            <h4>Despesas</h4>
+                <p class="descricao">Tudo que sai esse mês. Toque no status para marcar como pago</p>
+            </div>
+            <div class="tabela-despesas" id="tabelaDespesas">
+                <p class="texto-tabela">Nada por aqui ainda. Adicione o primeiro item abaixo.</p>
+            </div>
+            <form action="" class="saidas" id="saidas">
+                <label for="descricaoDespesa">
+                    <input type="text" name="descricao" id="descricaoDespesa" placeholder="Ex.: Aluguel" required>
+                </label>
+                <label for="valorDespesa">
+                    <input type="number" name="valor" id="valorDespesa" placeholder="Ex.: 1000,00" required>
+                </label>
+                <button class="botao-adicionar" id="adicionarDespesa">Adicionar</button>
+            </form>
+        </section>
+        <section class="parcelas conteudo-guia" id="guia4">
+            <div class="titulo-guia">
+            <h4>Parcelas</h4>
+                <p class="descricao">Compras parceladas — o total entra automaticamente nas despesas </p>
+            </div>
+            <div class="tabela-parcelas" id="tabelaParcelas">
+                <p class="texto-tabela">Nenhuma parcela cadastrada esse mês.</p>
+            </div>
+            <form action="" class="parcelas" id="parcelas">
+                <label for="descricaoParcela">
+                    <input type="text" name="descricao" id="descricaoParcela" placeholder="Ex.: Bicicleta" required>
+                </label>
+                <label for="parcelaAtual">
+                    <input type="number" name="valor" id="valorParcela" placeholder="N° atual" required>
+                    </label>
+                <label for="parcelaTotal">
+                    <input type="number" name="valor" id="valorParcela" placeholder="Total" required>
+                    </label>
+                <label for="valorDespesa">
+                    <input type="number" name="valor" id="valorDespesa" placeholder="Ex.: 1000,00" required>
+                </label>
+                </form>
+                <button class="botao-adicionar" id="adicionarDespesa">Adicionar Parcela</button>
+        </section>
+        <section class="assistente conteudo-guia" id="guia5">
+            <div class="resumo-assistente">
+                <div class="titulo-guia">
+                    <p class=""titulo>Assistente Inteligente</p>
+                    <p class="subtitulo"> Analise seus dados e tire dúvidas sobre sua organização financeira.</p>
+                </div>
+                <div class="analise-do-mes" id="analiseDoMes">
+                </div>
+                <div class="perguntas" id="perguntas">
+                    <p class="titulo">Perguntas Rápidas</p>
+                    <div class="perguntas-topo">
+                        <button class="pergunta" id="pergunta1">Como está meu saldo do mês?</button>
+                        <button class="pergunta" id="pergunta2">Qual é a minha maior despesa?</button>
+                    </div>
+                    <div class="perguntas-rodape">
+                        <button class="pergunta" id="pergunta3">Como investir?</button>
+                        <button class="pergunta" id="pergunta4">Analise meu mês?</button>
+                    </div>
+                </div>
+                <div class="chat" id="chat">
+                    <form action="" class="chat" id="chat">
+                    <textarea name="chat" id="chatAssistente" placeholder="Assistente: Como posso ajudar?" rols="40" columns="40"></textarea>
+                    <p class="subtitulo">Faça uma pergunta sobre suas finanças...</p>
+                    <label for="perguntaAssistente">
+                        <input type="text" name="pergunta" id="perguntaAssistente" placeholder="Digite sua pergunta aqui...">
+                    </label>
+                    <button class="botao-adicionar" id="enviarPergunta">Enviar</button> 
+                    </form>
+                </div>
+            <p class="orientacoes"> Use o assistente para obter insights sobre sua gestão financeira. As informações são de cunho orientativo.</p>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+    <div class="footer-content">
+        <p class="footer-text">Tainara Martins © 2026 Minhas Finanças</p>
+       <p class="footer-message">Organize hoje. Planeje amanhã.</p>
+        </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

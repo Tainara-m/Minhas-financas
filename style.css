@@ -1,0 +1,409 @@
+/* =====================================================
+   TEMA CLARO — PADRÃO
+   ===================================================== */
+
+:root {
+    color-scheme: light;
+    --font-primary: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+    /* Identidade */
+    --primary: #19CFA7;
+    --primary-hover: #0FAE91;
+    --primary-light: #DDF9F1;
+    --secondary: #19AFC2;
+    --secondary-hover: #11879B;
+    --accent: #FFC542;
+    --accent-hover: #E99A18;
+    --accent-light: #FFF3CF;
+
+    /* Fundos */
+    --bg: #F4F8F7;
+    --bg-secondary: #EAF3F1;
+    --surface: #FFFFFF;
+    --surface-secondary: #F7FAF9;
+    --surface-hover: #EEF7F5;
+
+    /* Textos */
+    --text-primary: #142033;
+    --text-secondary: #5F6B7A;
+    --text-muted: #8A96A5;
+    --text-inverse: #FFFFFF;
+
+    /* Estrutura */
+    --sidebar-bg: #081321;
+    --sidebar-secondary: #101F32;
+    --sidebar-text: #FFFFFF;
+    --sidebar-muted: #9DABBA;
+
+    /* Bordas */
+    --border: #DCE7E4;
+    --divider: #E8EFED;
+
+    /* Inputs */
+    --input-bg: #FFFFFF;
+    --input-border: #CEDBD8;
+    --input-text: #142033;
+    --input-placeholder: #8A96A5;
+
+    /* Financeiro */
+    --income: #16A77D;
+    --income-bg: #DDF8EF;
+    --expense: #D94C5C;
+    --expense-bg: #FDE7E9;
+    --investment: #159DB0;
+    --investment-bg: #DDF5F8;
+    --warning: #E99A18;
+    --warning-bg: #FFF2D6;
+    --info: #3B82F6;
+    --info-bg: #E5EFFF;
+
+    /* Gráficos */
+    --chart-1: #19CFA7;
+    --chart-2: #19AFC2;
+    --chart-3: #FFC542;
+    --chart-4: #3B82F6;
+    --chart-5: #8B5CF6;
+    --chart-6: #E05260;
+
+    /* Sombras */
+    --shadow-sm:0 2px 8px rgba(8, 19, 33, 0.06);
+    --shadow-md: 0 8px 24px rgba(8, 19, 33, 0.10);
+    --shadow-lg: 0 16px 40px rgba(8, 19, 33, 0.14);
+
+    /* Gradientes */
+    --gradient-primary: linear-gradient(135deg, #19CFA7, #19AFC2);
+    --gradient-card: linear-gradient(270deg, #19CFA7, #19AFC2);
+    --gradient-sidebar: linear-gradient(180deg, #081321, #101F32);
+    --gradient-gold: linear-gradient(135deg,  #FFE18A, #FFC542, #E99A18);
+}
+
+/* =====================================================
+   TEMA ESCURO
+   ===================================================== */
+
+[data-theme="dark"] {
+    color-scheme: dark;
+
+    /* Identidade */
+    --primary: #35DDB5;
+    --primary-hover: #65E9C7;
+    --primary-light: #123D36;
+
+    --secondary: #31BED0;
+    --secondary-hover: #5BD0DE;
+
+    --accent: #FFC542;
+    --accent-hover: #FFD66B;
+    --accent-light: #443719;
+
+    /* Fundos */
+    --bg: #07111E;
+    --bg-secondary: #0B1726;
+
+    --surface: #101F30;
+    --surface-secondary: #152638;
+    --surface-hover: #1B3044;
+
+    /* Textos */
+    --text-primary: #F2F7F6;
+    --text-secondary: #B6C4C9;
+    --text-muted: #7F929C;
+    --text-inverse: #07111E;
+
+    /* Estrutura */
+    --sidebar-bg: #050D17;
+    --sidebar-secondary: #0A1624;
+    --sidebar-text: #F5FAF9;
+    --sidebar-muted: #8798A4;
+
+    /* Bordas */
+    --border: #263A49;
+    --divider: #1D3040;
+
+    /* Inputs */
+    --input-bg: #0D1B2A;
+    --input-border: #2A4050;
+    --input-text: #F2F7F6;
+    --input-placeholder: #71848F;
+
+    /* Financeiro */
+    --income: #45DDB2;
+    --income-bg: #12382F;
+
+    --expense: #FF7380;
+    --expense-bg: #402128;
+
+    --investment: #42C8D8;
+    --investment-bg: #12363D;
+
+    --warning: #FFC55A;
+    --warning-bg: #40351D;
+
+    --info: #68A4FF;
+    --info-bg: #192F4D;
+
+    /* Gráficos */
+    --chart-1: #35DDB5;
+    --chart-2: #31BED0;
+    --chart-3: #FFC542;
+    --chart-4: #68A4FF;
+    --chart-5: #A78BFA;
+    --chart-6: #FF7380;
+
+    /* Sombras */
+    --shadow-sm:
+        0 2px 8px rgba(0, 0, 0, 0.20);
+
+    --shadow-md:
+        0 8px 24px rgba(0, 0, 0, 0.28);
+
+    --shadow-lg:
+        0 16px 40px rgba(0, 0, 0, 0.35);
+
+    /* Gradientes */
+    --gradient-primary:
+        linear-gradient(
+            135deg,
+            #35DDB5,
+            #19AFC2
+        );
+
+    --gradient-sidebar:
+        linear-gradient(
+            180deg,
+            #050D17,
+            #0B1B2B
+        );
+
+    --gradient-gold:
+        linear-gradient(
+            135deg,
+            #FFE18A,
+            #FFC542,
+            #E99A18
+        );
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth; /* Deixa a rolagem suave */
+}
+
+body{
+    background: var(--bg);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    color: var(--text-primary);
+    font-family: var(--font-primary);
+    margin: 10px 200px;
+}
+
+.top{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 10px;
+    padding: 10px;
+}
+
+h1{
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--text-primary);
+}
+
+.mes-atual{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    background: var(--bg-secondary);
+    padding: 10px;
+    border-radius: 50px;
+}
+
+.material-symbols-outlined{
+    width: 25px;
+    height: 25px;
+    color: var(--primary);
+    cursor: pointer;
+}
+
+.material-symbols-outlined:hover{
+    color: var(--primary-hover);
+}
+
+#mes{
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+.tema-btn {
+    cursor: pointer;
+}
+
+.resumo-geral{
+    background: var(--gradient-primary);
+    box-shadow: var(--shadow-ms);
+    padding: 20px;
+    border-radius: 20px;
+    gap: 10px;
+}
+
+.texto-saldo{
+    font-size: 1rem;
+    color: var(--text-inverse);
+}
+
+#saldoMesAtual{
+    font-size: 2rem;
+    font-weight: bolder;
+    color: var(--text-inverse);
+    margin-bottom: 10px;
+}
+
+.detalhado{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.titulo-detalhado{
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--primary-light);
+    margin-bottom:5px;
+}
+
+.valor-detalhado{
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-light);
+}
+
+nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.guia-container{
+    margin: 10px 0;
+    background: var(--bg-secondary);
+    padding: 10px;
+    border-radius: 20px;
+    border: var(--border) 2px solid;
+    align-content: center;
+}
+
+a{
+    text-decoration: none;
+    color: var(--text-primary);
+}
+
+a:hover{
+    color: var(--text-secondary);
+}
+
+.guia{
+    border: none;
+    font-family: var(--font-primary);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.selecionada{
+    color: var(--text-inverse);
+    background-color: var(--secondary);
+    padding: 7px;
+    border-radius: 50px;
+}
+
+.conteudo-guia{
+    display: none;
+}
+
+.conteudo-guia.ativa{
+    display: block;
+}
+
+.parent {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+grid-template-rows: repeat(2, 1fr);
+grid-gap: 10px;
+}
+
+.div-receita { 
+    grid-area: 1 / 1 / 2 / 2; 
+}
+.div-despesa { 
+    grid-area: 1 / 2 / 2 / 3; 
+}
+.div-saldo { 
+    grid-area: 2 / 1 / 3 / 2; 
+}
+.div-a-pagar { 
+    grid-area: 2 / 2 / 3 / 3;
+}
+
+.div-receita, .div-despesa, .div-saldo, .div-a-pagar{
+    background: var(--gradient-card);
+    border: #0FAE91 solid 1px;
+    border-radius: 20px;
+    padding: 20px;
+    color: var(--text-inverse);
+}
+
+.titulo-resumo{
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.valor-resumo-card{
+    font-size: 1rem;
+    font-weight: 900;
+}
+
+.titulo-guia{
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    padding: 10px;
+    border: var(--border) solid 2px;
+    border-radius: 10px;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+h4{
+    font-size: 1rem;
+    font-weight: 900;
+}
+
+.descricao{
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+}
+
+.contas-cadastradas, .parcelas-cadastradas{
+    background: var(--info-bg);
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 5px;
+    border-radius: 0 10px 10px 0;
+    border-left: var(--income) solid 5px;
+    justify-content: space-between;
+    display: flex;
+}
+
+footer{
+    margin: 10px;
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    text-align: center;
+}
