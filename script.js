@@ -52,7 +52,15 @@ function alternarGuia(event, idGuia){
     const tabelaEntradas = document.getElementById("tabelaEntradas");
     const dadosEntradas = document.getElementById("dadosEntradas");
 
+    const modal = document.querySelector('.fundo-modal');
+    const btnExcluirModal = document.getElementById('btnExcluirModal');
+    const btnCancelarModal = document.getElementById('btnCancelarModal');
+
     const receitas = [];
+    let indiceParaExcluir = null;
+
+    renderizarReceitas();
+
 
     formReceitas.addEventListener('submit', (event) =>{
         event.preventDefault();
@@ -80,12 +88,14 @@ function alternarGuia(event, idGuia){
             const valorEntrada = document.createElement('td');
             const acaoExcluir = document.createElement('td');
             const btnExcluir = document.createElement('button');
+            const formatarValorEntrada = new Intl.NumberFormat('pt-BR',{style:'currency', currency:'BRL'} );
 
             tituloEntrada.textContent = receita.titulo;
-            valorEntrada.textContent = receita.valor;
+            valorEntrada.textContent = formatarValorEntrada.format(receita.valor);
             btnExcluir.textContent = "Excluir";
 
-            btnExcluir.addEventListener('click', (event) =>{
+            btnExcluir.addEventListener('click', () =>{
+                indiceParaExcluir = indice; 
                 modal.classList.remove('oculto');
         });
  
@@ -95,11 +105,26 @@ function alternarGuia(event, idGuia){
             acaoExcluir.appendChild(btnExcluir);
             dadosEntradas.appendChild(entrada);
         });
+
+        const textoTabela = document.getElementById('textoTabela');
+
+        if(receitas.length > 0){
+            textoTabela.classList.add('ocultar');
+            tabelaEntradas.classList.remove('ocultar');
+        }else{
+            textoTabela.classList.remove('ocultar');
+            tabelaEntradas.classList.add('ocultar');
+        }
     }
 
-    const modal = document.querySelector('.fundo-modal');
-    const btnExcluirModal = document.getElementById('btnExcluirModal');
-    const btnCancelarModal = document.getElementById('btnCancelarModal');
-
-    let indiceParaExcluir = null;
+        btnCancelarModal.addEventListener('click', () =>{
+            modal.classList.add('oculto');
+            indiceParaExcluir = null;
+        });
     
+        btnExcluirModal.addEventListener('click',  () =>{
+            receitas.splice(indiceParaExcluir,1);
+            renderizarReceitas();
+            modal.classList.add('oculto');
+            indiceParaExcluir = null;
+        });

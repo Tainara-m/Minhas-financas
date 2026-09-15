@@ -322,7 +322,7 @@ a:hover{
     border-radius: 50px;
 }
 
-.conteudo-guia{
+.conteudo-guia:not(ativa) {
     display: none;
 }
 
@@ -451,6 +451,10 @@ thead tr th{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.texto-tabela.ocultar{
+    display: none;
 }
 
 .entradas{
