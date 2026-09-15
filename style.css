@@ -418,7 +418,7 @@ h5{
 .descricao-guia{
     font-size: 0.9rem;
     font-weight: 300;
-    color: var(--text-secondary);
+    color: var(--text-muted);
 }
 
 table{
@@ -447,7 +447,7 @@ thead tr th{
 .texto-tabela{
     font-size: 1rem;
     font-weight: 100;
-    color: var(--text-secondary);
+    color: var(--text-muted);
     display: flex;
     justify-content: center;
     align-items: center;
