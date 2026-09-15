@@ -401,6 +401,163 @@ h4{
     display: flex;
 }
 
+.receitas{
+    background: var(--chart-1);
+    padding: 20px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+h5{
+    font-size: 1.5rem;
+    color: var(--text-inverse);
+}
+
+.descricao-guia{
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--text-secondary);
+}
+
+table{
+    margin-top: 10px;
+    width: 100%;
+    border: var(--border) 2px solid;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+thead tr th{
+    background: var(--income);
+    border-radius: 20px;
+    text-align: center;
+    padding: 5px;
+    color: var(--text-inverse);
+}
+
+ tbody, td{
+    background: var(--divider);
+    border-radius: 20px;
+    text-align: center;
+    padding: 3px;
+}
+
+.texto-tabela{
+    font-size: 1rem;
+    font-weight: 100;
+    color: var(--text-secondary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.entradas{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#descricaoReceita, #valorReceita{
+    border: none;
+    border-radius: 20px;
+    background: var(--bg-secondary);
+    height: 30px;
+}
+
+#descricaoReceita{
+    width: 500px;
+}
+
+#valorReceita{
+    width: 320px;
+}
+
+input{
+    font-family: var(--font-primary);
+    padding: 10px;
+}
+
+.botao-adicionar{
+    border: none;
+    box-shadow: 0 2px 4px var(--accent-hover) ;
+    color: var(--text-inverse);
+    background-color: var(--secondary);
+    padding: 7px;
+    border-radius: 50px;
+    font-family: var(--font-primary);
+    font-weight: 800;
+}
+
+.botao-adicionar:hover{
+    background-color: var(--investment);
+}
+
+.botao-adicionar:active{
+      transform: scale(0.96);     /* Reduz levemente o tamanho simulando o afundamento */
+}
+
+.fundo-modal{
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.40);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.caixa-confirmacao{
+    background: var(--bg);
+    color: var(--text-primary);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    width: max-content;
+    gap: 10px;
+}
+
+.fundo-modal.oculto{
+    display: none;
+}
+
+.titulo-modal{
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.texto-modal{
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+}
+
+.excluir-modal, .cancelar-modal{
+    border: none;
+    color: var(--text-inverse);
+    background-color: var(--secondary);
+    padding: 5px;
+    border-radius: 50px;
+    font-family: var(--font-primary);
+    font-weight: 800;
+}
+
+.excluir-modal{
+    background-color: var(--expense);
+}
+
+.excluir-modal:hover, .cancelar-modal:hover{
+    background-color: var(--investment);
+}
+
+.excluir-modal:active, .cancelar-modal:active{
+      transform: scale(0.96);     /* Reduz levemente o tamanho simulando o afundamento */
+}
+
 footer{
     margin: 10px;
     font-size: 0.6rem;

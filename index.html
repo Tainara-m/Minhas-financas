@@ -93,12 +93,9 @@
             </div>
         </section>
         <section class="receitas conteudo-guia" id="guia2">
-            <div class="titulo-guia">
-            <h4>Receitas</h4>
-                <p class="descricao">Tudo que entra esse mês</p>
-            </div>
-            <div class="tabela-receitas" id="tabelaReceitas">
-                <p class="texto-tabela">Nada por aqui ainda. Adicione o primeiro item abaixo.</p>
+            <div class="cabecalho-guia">
+            <h5>Receitas</h5>
+                <p class="descricao-guia">Tudo que entra esse mês</p>
             </div>
             <form action="" class="entradas" id="entradas">
                 <label for="descricaoReceita">
@@ -109,6 +106,30 @@
                 </label>
                 <button class="botao-adicionar" id="adicionarReceita">Adicionar</button>
             </form>
+            <div class="tabela-receitas" id="tabelaReceitas">
+                <p class="texto-tabela">Nada por aqui ainda. Adicione o primeiro item abaixo.</p>
+                <table class="tabela-entradas" id="tabelaEntradas">
+                    <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Valor</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dadosEntradas">
+                    </tbody>
+                </table>
+                <div class="fundo-modal oculto">
+                    <div class="caixa-confirmacao" id="caixa-confirmacao">
+                        <p class="titulo-modal">Excluir receita</p>
+                        <p class="texto-modal">Deseja mesmo excluir a receita?</p>
+                        <div class="acoes-modal">
+                            <button class="excluir-modal" id="btnExcluirModal">Excluir</button>
+                            <button class="cancelar-modal" id="btnCancelarModal">Cencelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
         <section class="despesas conteudo-guia" id="guia3">
             <div class="titulo-guia">
