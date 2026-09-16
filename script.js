@@ -96,6 +96,7 @@ function renderizarReceitas() {
     const btnEditar = document.createElement("button");
     btnExcluir.classList.add("btn-excluir");
     btnEditar.classList.add("btn-editar");
+    acaoEntrada.classList.add("acao-entrada");
     const formatarValorEntrada = new Intl.NumberFormat("pt-BR", {
       style: "currency",
       currency: "BRL",

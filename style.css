@@ -192,7 +192,7 @@
 }
 
 body{
-    background: var(--bg);
+    background: var(--bg-secondary);
     transition: background-color 0.3s ease, color 0.3s ease;
     color: var(--text-primary);
     font-family: var(--font-primary);
@@ -219,7 +219,7 @@ h1{
     flex-direction: row;
     align-items: center;
     gap: 10px;
-    background: var(--bg-secondary);
+    background: var(--bg);
     padding: 10px;
     border-radius: 50px;
 }
@@ -402,7 +402,7 @@ h4{
 }
 
 .receitas{
-    background: var(--chart-1);
+    background: var(--bg);
     padding: 20px;
     border-radius: 20px;
     display: flex;
@@ -412,13 +412,13 @@ h4{
 
 h5{
     font-size: 1.5rem;
-    color: var(--text-inverse);
+    color: var(--text-primary);
 }
 
 .descricao-guia{
     font-size: 0.9rem;
     font-weight: 300;
-    color: var(--text-muted);
+    color: var(--text-primary);
 }
 
 table{
@@ -442,6 +442,18 @@ thead tr th{
     border-radius: 20px;
     text-align: center;
     padding: 3px;
+}
+
+.titulo-tabela{
+    width: 40%;
+}
+
+.valor-tabela{
+    width: 30%;
+}
+
+.acao-tabela{
+    width: 20%;
 }
 
 .texto-tabela{
@@ -540,7 +552,7 @@ input{
     margin-bottom: 10px;
 }
 
-.excluir-modal, .cancelar-modal{
+.excluir-modal, .cancelar-modal, .btn-excluir, .btn-editar{
     border: none;
     color: var(--text-inverse);
     background-color: var(--secondary);
@@ -550,7 +562,7 @@ input{
     font-weight: 800;
 }
 
-.excluir-modal{
+.excluir-modal, .btn-excluir{
     background-color: var(--expense);
 }
 
@@ -560,6 +572,13 @@ input{
 
 .excluir-modal:active, .cancelar-modal:active{
       transform: scale(0.96);     /* Reduz levemente o tamanho simulando o afundamento */
+}
+
+.acao-entrada{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
 }
 
 footer{
