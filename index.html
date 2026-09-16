@@ -92,12 +92,12 @@
                 </div>
             </div>
         </section>
-        <section class="receitas conteudo-guia" id="guia2">
+        <section class="guia-geral conteudo-guia" id="guia2">
             <div class="cabecalho-guia">
             <h5>Receitas</h5>
                 <p class="descricao-guia">Tudo que entra esse mês</p>
             </div>
-            <form action="" class="entradas" id="entradas">
+            <form action="" class="form-dados" id="entradas">
                 <label for="descricaoReceita">
                     <input type="text" name="descricao" id="descricaoReceita" placeholder="Ex.: Salário" required>
                 </label>
@@ -131,15 +131,12 @@
                 </div>
             </div>
         </section>
-        <section class="despesas conteudo-guia" id="guia3">
-            <div class="titulo-guia">
-            <h4>Despesas</h4>
-                <p class="descricao">Tudo que sai esse mês. Toque no status para marcar como pago</p>
+        <section class="guia-geral conteudo-guia" id="guia3">
+            <div class="cabecalho-guia">
+            <h5>Despesas</h5>
+                <p class="descricao-guia">Tudo que sai esse mês. Toque no status para marcar como pago</p>
             </div>
-            <div class="tabela-despesas" id="tabelaDespesas">
-                <p class="texto-tabela">Nada por aqui ainda. Adicione o primeiro item abaixo.</p>
-            </div>
-            <form action="" class="saidas" id="saidas">
+            <form action="" class="form-dados" id="saidas">
                 <label for="descricaoDespesa">
                     <input type="text" name="descricao" id="descricaoDespesa" placeholder="Ex.: Aluguel" required>
                 </label>
@@ -148,6 +145,31 @@
                 </label>
                 <button class="botao-adicionar" id="adicionarDespesa">Adicionar</button>
             </form>
+            <div class="tabela-despesas" id="tabelaDespesas">
+                <p class="texto-tabela">Nada por aqui ainda. Adicione o primeiro item abaixo.</p>
+                <table class="tabela-despesas" id="tabelaDespesas">
+                 <thead>
+                        <tr>
+                            <th class="titulo-tabela">Título</th>
+                            <th class="valor-tabela">Valor</th>
+                            <th class="status-tabela" id="statusDepesas">Status</th>
+                            <th class="acao-tabela">Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dadosDespesas">
+                    </tbody>
+                </table>
+                <div class="fundo-modal oculto">
+                    <div class="caixa-confirmacao" id="caixa-confirmacao">
+                        <p class="titulo-modal-despesa">Excluir despesa</p>
+                        <p class="texto-modal-despesa">Deseja mesmo excluir a despesa?</p>
+                        <div class="acoes-modal">
+                            <button class="excluir-modal" id="btnExcluirModalDespesa">Excluir</button>
+                            <button class="cancelar-modal" id="btnCancelarModalDespesa">Cencelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
         <section class="parcelas conteudo-guia" id="guia4">
             <div class="titulo-guia">

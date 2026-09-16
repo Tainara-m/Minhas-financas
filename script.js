@@ -212,3 +212,115 @@ function atualizarResumoReceitas(){
   
   valorResumoReceita.textContent = total;
 }
+
+const descricaoDespesa = document.getElementById("descricaoDespesa");
+const precoDespesa = document.getElementById("valorDespesa");
+const formDespesas = document.getElementById("saidas");
+const tabelaDespesas = document.getElementById("tabelaDespesas");
+const statusDespesas = document.getElementById("statusDespesas");
+const dadosDespesas = document.getElementById("dadosDespesas");
+let despesas;
+const despesasSalvas = localStorage.getItem("despesas");
+const btnExcluirModalDespesa = document.getElementById("btnExcluirModalDespesa");
+const btnCancelarModalDespesa = document.getElementById("btnCancelarModalDespesa");
+
+if(despesasSalvas !== null){
+  despesas = JSON.parse(despesasSalvas);
+}else{
+  despesas = [];
+}
+
+formDespesas.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const tituloDespesa = descricaoDespesa.value;
+  const valorDespesa = Number(precoDespesa.value);
+
+  const tituloCapitalizadoDespesa = tituloDespesa
+    .split(" ")
+    .map(function (palavra) {
+      return palavra.charAt(0).toUpperCase() + palavra.slice(1).toLowerCase();
+    })
+    .join(" ");
+
+  let despesa = {
+    titulo: tituloCapitalizadoDespesa,
+    valor: valorDespesa,
+    status: "pendente"
+  };
+
+  despesas.push(despesa);
+  renderizarDespesas();
+});
+
+function renderizarDespesas(){
+  dadosDespesas.textContent = "";
+
+  despesas.forEach(function(despesa,indice){
+    const saida = document.createElement("tr");
+    const tituloSaida = document.createElement("td");
+    const valorSaida = document.createElement("td");
+    const statusSaida = document.createElement("td");
+    const acaoSaida = document.createElement("td");
+    const containerAcoes = document.createElement("div");
+    const btnExcluirDespesa = document.createElement("button");
+    const btnEditarDespesa = document.createElement("button");
+    btnExcluirDespesa.classList.add("btn-excluir-despesa");
+    btnEditarDespesa.classList.add("btn-editar-despesa");
+    containerAcoes.classList.add("acoes");
+    const formatarValorSaida = new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+    let edicao = false;
+    tituloSaida.textContent = despesa.titulo;
+    valorSaida.textContent = formatarValorSaida.format(despesa.valor);
+    statusSaida.textContent = despesa.status;
+    btnExcluirDespesa.textContent = "Excluir";
+    btnEditarDespesa.textContent = "Editar";
+
+    btnExcluirDespesa.addEventListener('click',() => {
+      indiceParaExcluirDespesa = indice;
+      modal.classList.remove("oculto");
+    });
+
+    btnEditarDespesa.addEventListener('click', () => {
+      if(edicao){
+        const inputTituloAtualDespesa = tituloSaida.querySelector("input");
+        const inputValorAtualDespesa = valorSaida.querySelector("input");
+
+        despesas[indice].titulo = inputTituloAtualDespesa.value;
+        despesas[indice].valor = Number(inputValorAtualDespesa.value);
+
+        renderizarDespesas();
+      }else {
+        const inputTituloDespesa = document.createElement("input"); //cria o input do título
+        const inputValorDespesa = document.createElement("input"); //cria o input do valor
+
+        inputTituloDespesa.type = "text"; //define o tipo do input
+        inputValorDespesa.type = "number"; //define o tipo do input
+
+        inputTituloDespesa.value = despesa.titulo; //atribui valor ao input
+        inputValorDespesa.value = despesa.valor; //atribui valor ao input
+
+        btnEditarDespesa.textContent = "Salvar";
+        edicao = true;
+        tituloSaida.textContent = ""; // limpar tituloSaida
+        valorSaida.textContent = ""; // limpar valorSaida
+
+        tituloSaida.appendChild(inputTituloDespesa); // colocar inputTitulo dentro de tituloSaida
+        valorSaida.appendChild(inputValorDespesa); // colocar inputValor dentro de valorSaida
+      }
+    });
+
+    saida.appendChild(tituloSaida);
+    saida.appendChild(valorSaida);
+    saida.appendChild(statusSaida);
+    saida.appendChild(acaoSaida);
+    acaoSaida.appendChild(btnExcluirDespesa);
+    acaoSaida.appendChild(btnEditarDespesa);
+    dadosDespesas.appendChild(saida);
+  });
+}
+
+renderizarDespesas();

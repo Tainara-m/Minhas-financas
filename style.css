@@ -322,7 +322,7 @@ a:hover{
     border-radius: 50px;
 }
 
-.conteudo-guia:not(ativa) {
+.conteudo-guia:not(.ativa) {
     display: none;
 }
 
@@ -401,7 +401,7 @@ h4{
     display: flex;
 }
 
-.receitas{
+.guia-geral{
     background: var(--bg);
     padding: 20px;
     border-radius: 20px;
@@ -445,14 +445,14 @@ thead tr th{
 }
 
 .titulo-tabela{
-    width: 40%;
+    width: 30%;
 }
 
 .valor-tabela{
     width: 30%;
 }
 
-.acao-tabela{
+.acao-tabela, .status-tabela{
     width: 20%;
 }
 
@@ -469,25 +469,26 @@ thead tr th{
     display: none;
 }
 
-.entradas{
+.form-dados{
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
-#descricaoReceita, #valorReceita{
+#descricaoReceita, #valorReceita,
+#descricaoDespesa, #valorDespesa{
     border: none;
     border-radius: 20px;
     background: var(--bg-secondary);
     height: 30px;
 }
 
-#descricaoReceita{
+#descricaoReceita, #descricaoDespesa{
     width: 500px;
 }
 
-#valorReceita{
+#valorReceita, #valorDespesa{
     width: 320px;
 }
 
@@ -552,7 +553,7 @@ input{
     margin-bottom: 10px;
 }
 
-.excluir-modal, .cancelar-modal, .btn-excluir, .btn-editar{
+.excluir-modal, .cancelar-modal, .btn-excluir, .btn-editar, .btn-excluir-despesa, .btn-editar-despesa{
     border: none;
     color: var(--text-inverse);
     background-color: var(--secondary);
@@ -574,11 +575,12 @@ input{
       transform: scale(0.96);     /* Reduz levemente o tamanho simulando o afundamento */
 }
 
-.acao-entrada{
+.acoes{
     display: flex;
     gap: 5px;
     align-items: center;
     justify-content: center;
+    border-radius: 20px;
 }
 
 footer{
