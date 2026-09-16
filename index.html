@@ -145,7 +145,7 @@
                 </label>
                 <button class="botao-adicionar" id="adicionarDespesa">Adicionar</button>
             </form>
-            <div class="tabela-despesas" id="tabelaDespesas">
+            <div class="tabela-despesas">
                 <p class="texto-tabela-despesas" id="textoTabelaDespesas">Nada por aqui ainda. Adicione o primeiro item abaixo.</p>
                 <table class="tabela-despesas" id="tabelaDespesas">
                  <thead>
@@ -171,31 +171,43 @@
                 </div>
             </div>
         </section>
-        <section class="parcelas conteudo-guia" id="guia4">
-            <div class="titulo-guia">
-            <h4>Parcelas</h4>
-                <p class="descricao">Compras parceladas — o total entra automaticamente nas despesas </p>
+        <section class="guia-geral conteudo-guia" id="guia4">
+            <div class="cabecalho-guia">
+            <h5>Parcelas</h5>
+                <p class="descricao-guia">Compras parceladas — o total entra automaticamente nas despesas </p>
             </div>
-            <div class="tabela-parcelas" id="tabelaParcelas">
-                <p class="texto-tabela">Nenhuma parcela cadastrada esse mês.</p>
-            </div>
-            <form action="" class="parcelas" id="parcelas">
+            <form action="" class="form-dados" id="parcelas">
                 <label for="descricaoParcela">
                     <input type="text" name="descricao" id="descricaoParcela" placeholder="Ex.: Bicicleta" required>
                 </label>
                 <label for="parcelaAtual">
-                    <input type="number" name="valor" id="valorParcela" placeholder="N° atual" required>
+                    <input type="number" name="valor" id="parcelaAtual" placeholder="N° atual" required>
                     </label>
                 <label for="parcelaTotal">
-                    <input type="number" name="valor" id="valorParcela" placeholder="Total" required>
+                    <input type="number" name="valor" id="parcelaTotal" placeholder="Total" required>
                     </label>
-                <label for="valorDespesa">
-                    <input type="number" name="valor" id="valorDespesa" placeholder="Ex.: 1000,00" required>
+                <label for="valorParcela">
+                    <input type="number" name="valor" id="valorParcela" placeholder="Ex.: 1000,00" required>
                 </label>
+                <button class="botao-adicionar" id="adicionarParcela">Adicionar Parcela</button>
                 </form>
-                <button class="botao-adicionar" id="adicionarDespesa">Adicionar Parcela</button>
+            <div class="tabela-parcelas">
+                <p class="texto-tabela-parcelas" id="textoTabelaParcelas">Nenhuma parcela cadastrada esse mês.</p>
+                <table class="tabela-parcelas" id="tabelaParcelas">
+                 <thead>
+                        <tr>
+                            <th class="titulo-tabela">Título</th>
+                            <th class="atual-tabela">Atual</th>
+                            <th class="total-tabela">Total</th>
+                            <th class="valor-tabela">Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dadosParcelas">
+                    </tbody>
+                </table>
+            </div>
         </section>
-        <section class="assistente conteudo-guia" id="guia5">
+        <section class="guia-geral conteudo-guia" id="guia5">
             <div class="resumo-assistente">
                 <div class="titulo-guia">
                     <p class=""titulo>Assistente Inteligente</p>
@@ -214,7 +226,7 @@
                         <button class="pergunta" id="pergunta4">Analise meu mês?</button>
                     </div>
                 </div>
-                <div class="chat" id="chat">
+                <div class="chat">
                     <form action="" class="chat" id="chat">
                     <textarea name="chat" id="chatAssistente" placeholder="Assistente: Como posso ajudar?" rols="40" columns="40"></textarea>
                     <p class="subtitulo">Faça uma pergunta sobre suas finanças...</p>

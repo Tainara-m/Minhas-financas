@@ -246,7 +246,7 @@ h1{
 
 .resumo-geral{
     background: var(--gradient-primary);
-    box-shadow: var(--shadow-ms);
+    box-shadow: var(--shadow-sm);
     padding: 20px;
     border-radius: 20px;
     gap: 10px;
@@ -477,7 +477,7 @@ thead tr th{
 }
 
 #descricaoReceita, #valorReceita,
-#descricaoDespesa, #valorDespesa{
+#descricaoDespesa, #valorDespesa, #descricaoParcela, #valorParcela, #parcelaAtual, #parcelaTotal{
     border: none;
     border-radius: 20px;
     background: var(--bg-secondary);
@@ -490,6 +490,19 @@ thead tr th{
 
 #valorReceita, #valorDespesa{
     width: 320px;
+}
+
+#descricaoParcela{
+    width: 300px;
+}
+
+#parcelaAtual,
+#parcelaTotal{
+    width: 150px;
+}
+
+#valorParcela{
+    width: 150px;
 }
 
 input{
@@ -513,7 +526,7 @@ input{
 }
 
 .botao-adicionar:active{
-      transform: scale(0.96);     /* Reduz levemente o tamanho simulando o afundamento */
+      transform: scale(0.96);   /* Reduz levemente o tamanho simulando o afundamento */
 }
 
 .fundo-modal, .fundo-modal-despesa{
