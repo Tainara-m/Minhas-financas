@@ -193,23 +193,23 @@ function salvarReceitas() {
 }
 
 function calcularTotalReceitas() {
-    let totalReceitas = 0;
+  let totalReceitas = 0;
 
-    receitas.forEach(function(receita) {
-        totalReceitas += receita.valor;
-    });
+  receitas.forEach(function (receita) {
+    totalReceitas += receita.valor;
+  });
 
-    return totalReceitas;
+  return totalReceitas;
 }
 
-function atualizarResumoReceitas(){
+function atualizarResumoReceitas() {
   const valorResumoReceita = document.getElementById("valorResumoReceita");
   const formatador = new Intl.NumberFormat("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    });
+    style: "currency",
+    currency: "BRL",
+  });
   const total = formatador.format(calcularTotalReceitas());
-  
+
   valorResumoReceita.textContent = total;
 }
 
@@ -221,14 +221,24 @@ const statusDespesas = document.getElementById("statusDespesas");
 const dadosDespesas = document.getElementById("dadosDespesas");
 let despesas;
 const despesasSalvas = localStorage.getItem("despesas");
-const btnExcluirModalDespesa = document.getElementById("btnExcluirModalDespesa");
-const btnCancelarModalDespesa = document.getElementById("btnCancelarModalDespesa");
+const modalDespesa = document.querySelector(".fundo-modal-despesa");
+const btnExcluirModalDespesa = document.getElementById(
+  "btnExcluirModalDespesa",
+);
+const btnCancelarModalDespesa = document.getElementById(
+  "btnCancelarModalDespesa",
+);
 
-if(despesasSalvas !== null){
+let indiceParaExcluirDespesa = null;
+
+if (despesasSalvas !== null) {
   despesas = JSON.parse(despesasSalvas);
-}else{
+} else {
   despesas = [];
 }
+
+atualizarResumoDespesas();
+renderizarDespesas();
 
 formDespesas.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -246,17 +256,20 @@ formDespesas.addEventListener("submit", (event) => {
   let despesa = {
     titulo: tituloCapitalizadoDespesa,
     valor: valorDespesa,
-    status: "pendente"
+    status: "Pendente",
   };
 
   despesas.push(despesa);
+  salvarDespesas();
+  atualizarResumoDespesas();
   renderizarDespesas();
+  formDespesas.reset(); //limpa os campos após inserir uma despesa
 });
 
-function renderizarDespesas(){
+function renderizarDespesas() {
   dadosDespesas.textContent = "";
 
-  despesas.forEach(function(despesa,indice){
+  despesas.forEach(function (despesa, indice) {
     const saida = document.createElement("tr");
     const tituloSaida = document.createElement("td");
     const valorSaida = document.createElement("td");
@@ -279,21 +292,40 @@ function renderizarDespesas(){
     btnExcluirDespesa.textContent = "Excluir";
     btnEditarDespesa.textContent = "Editar";
 
-    btnExcluirDespesa.addEventListener('click',() => {
-      indiceParaExcluirDespesa = indice;
-      modal.classList.remove("oculto");
+    if(despesas[indice].status === "Pendente"){
+      statusSaida.classList.add("status-pendente");
+    }else{
+      statusSaida.classList.add("status-pago");
+    }
+
+    statusSaida.addEventListener('click', () =>{
+    if (despesas[indice].status === "Pendente") {
+      despesas[indice].status = "Pago";
+    }else{
+      despesas[indice].status = "Pendente";
+
+    }
+    salvarDespesas();
+    atualizarResumoDespesas();
+    renderizarDespesas();
     });
 
-    btnEditarDespesa.addEventListener('click', () => {
-      if(edicao){
+    btnExcluirDespesa.addEventListener("click", () => {
+      indiceParaExcluirDespesa = indice;
+      modalDespesa.classList.remove("oculto");
+    });
+
+    btnEditarDespesa.addEventListener("click", () => {
+      if (edicao) {
         const inputTituloAtualDespesa = tituloSaida.querySelector("input");
         const inputValorAtualDespesa = valorSaida.querySelector("input");
 
         despesas[indice].titulo = inputTituloAtualDespesa.value;
         despesas[indice].valor = Number(inputValorAtualDespesa.value);
-
+        salvarDespesas();
+        atualizarResumoDespesas();
         renderizarDespesas();
-      }else {
+      } else {
         const inputTituloDespesa = document.createElement("input"); //cria o input do título
         const inputValorDespesa = document.createElement("input"); //cria o input do valor
 
@@ -321,6 +353,58 @@ function renderizarDespesas(){
     acaoSaida.appendChild(btnEditarDespesa);
     dadosDespesas.appendChild(saida);
   });
+
+  const textoTabelaDespesas = document.getElementById("textoTabelaDespesas");
+  if (despesas.length > 0) {
+    textoTabelaDespesas.classList.add("ocultar");
+    tabelaDespesas.classList.remove("ocultar");
+  } else {
+    textoTabelaDespesas.classList.remove("ocultar");
+    tabelaDespesas.classList.add("ocultar");
+  }
 }
 
+btnCancelarModalDespesa.addEventListener("click", () => {
+  modalDespesa.classList.add("oculto");
+  indiceParaExcluirDespesa = null;
+});
+
+btnExcluirModalDespesa.addEventListener("click", () => {
+  despesas.splice(indiceParaExcluirDespesa, 1);
+  salvarDespesas();
+  atualizarResumoDespesas();
+  renderizarDespesas();
+  modalDespesa.classList.add("oculto");
+  indiceParaExcluirDespesa = null;
+});
+
+atualizarResumoDespesas();
 renderizarDespesas();
+
+function salvarDespesas() {
+  let salvarDespesa;
+
+  salvarDespesa = JSON.stringify(despesas);
+  localStorage.setItem("despesas", salvarDespesa);
+}
+
+function calcularTotalDespesas() {
+  let totalDespesas = 0;
+
+  despesas.forEach(function (despesa) {
+    totalDespesas += despesa.valor;
+  });
+
+  return totalDespesas;
+}
+
+function atualizarResumoDespesas() {
+  const valorResumoDespesa = document.getElementById("valorResumoDespesa");
+  const formatadorDespesas = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
+  const totalDespesas = formatadorDespesas.format(calcularTotalDespesas());
+
+  valorResumoDespesa.textContent = totalDespesas;
+}
