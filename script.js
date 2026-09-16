@@ -50,14 +50,20 @@ const precoReceita = document.getElementById("valorReceita");
 const formReceitas = document.getElementById("entradas");
 const tabelaEntradas = document.getElementById("tabelaEntradas");
 const dadosEntradas = document.getElementById("dadosEntradas");
-
+const receitasSalvas = localStorage.getItem("receitas");
+let receitas;
 const modal = document.querySelector(".fundo-modal");
 const btnExcluirModal = document.getElementById("btnExcluirModal");
 const btnCancelarModal = document.getElementById("btnCancelarModal");
 
-const receitas = [];
 let indiceParaExcluir = null;
 
+if (receitasSalvas !== null) {
+  receitas = JSON.parse(receitasSalvas);
+} else {
+  receitas = [];
+}
+atualizarResumoReceitas();
 renderizarReceitas();
 
 formReceitas.addEventListener("submit", (event) => {
@@ -77,10 +83,12 @@ formReceitas.addEventListener("submit", (event) => {
     titulo: tituloCapitalizado,
     valor: valorReceita,
   };
+  localStorage.getItem("receitas");
 
   receitas.push(receita);
+  salvarReceitas();
+  atualizarResumoReceitas();
   renderizarReceitas();
-
   formReceitas.reset();
 });
 
@@ -119,6 +127,8 @@ function renderizarReceitas() {
 
         receitas[indice].titulo = inputTituloAtual.value;
         receitas[indice].valor = Number(inputValorAtual.value);
+        salvarReceitas();
+        atualizarResumoReceitas();
         renderizarReceitas();
       } else {
         const inputTitulo = document.createElement("input"); //cria o input do título
@@ -165,7 +175,40 @@ btnCancelarModal.addEventListener("click", () => {
 
 btnExcluirModal.addEventListener("click", () => {
   receitas.splice(indiceParaExcluir, 1);
+  salvarReceitas();
+  atualizarResumoReceitas();
   renderizarReceitas();
   modal.classList.add("oculto");
   indiceParaExcluir = null;
 });
+
+atualizarResumoReceitas();
+renderizarReceitas();
+
+function salvarReceitas() {
+  let salvarReceita;
+
+  salvarReceita = JSON.stringify(receitas);
+  localStorage.setItem("receitas", salvarReceita);
+}
+
+function calcularTotalReceitas() {
+    let totalReceitas = 0;
+
+    receitas.forEach(function(receita) {
+        totalReceitas += receita.valor;
+    });
+
+    return totalReceitas;
+}
+
+function atualizarResumoReceitas(){
+  const valorResumoReceita = document.getElementById("valorResumoReceita");
+  const formatador = new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+  const total = formatador.format(calcularTotalReceitas());
+  
+  valorResumoReceita.textContent = total;
+}
