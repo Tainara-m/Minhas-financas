@@ -456,7 +456,7 @@ thead tr th{
     width: 20%;
 }
 
-.texto-tabela, .texto-tabela-despesas{
+.texto-tabela, .texto-tabela-despesas, .texto-tabela-parcelas{
     font-size: 1rem;
     font-weight: 100;
     color: var(--text-muted);
@@ -465,7 +465,7 @@ thead tr th{
     align-items: center;
 }
 
-.texto-tabela.ocultar, .texto-tabela-despesas.ocultar{
+.texto-tabela.ocultar, .texto-tabela-despesas.ocultar, .texto-tabela-parcelas.ocultar{
     display: none;
 }
 
@@ -529,7 +529,7 @@ input{
       transform: scale(0.96);   /* Reduz levemente o tamanho simulando o afundamento */
 }
 
-.fundo-modal, .fundo-modal-despesa{
+.fundo-modal, .fundo-modal-despesa, .fundo-modal-parcela{
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.40);
@@ -552,7 +552,7 @@ input{
     gap: 10px;
 }
 
-.fundo-modal.oculto, .fundo-modal-despesa.oculto{
+.fundo-modal.oculto, .fundo-modal-despesa.oculto, .fundo-modal-parcela.oculto{
     display: none;
 }
 
@@ -566,7 +566,7 @@ input{
     margin-bottom: 10px;
 }
 
-.excluir-modal, .cancelar-modal, .btn-excluir, .btn-editar, .btn-excluir-despesa, .btn-editar-despesa, .status-pendente, .status-pago{
+.excluir-modal, .cancelar-modal, .btn-excluir, .btn-editar, .btn-excluir-despesa, .btn-editar-despesa, .status-pendente, .status-pago, .btn-excluir-parcelas, .btn-editar-parcelas{
     border: none;
     color: var(--text-inverse);
     background-color: var(--secondary);
@@ -585,7 +585,7 @@ input{
     background-color: var(--chart-6);
 }
 
-.excluir-modal, .btn-excluir, .btn-excluir-despesa{
+.excluir-modal, .btn-excluir, .btn-excluir-despesa, .btn-excluir-parcelas{
     background-color: var(--expense);
 }
 

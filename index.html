@@ -42,7 +42,7 @@
                 </div>
                 <div class="despesa">
                     <p class="titulo-detalhado">Despesa</p>
-                    <p class="valor-detalhado" id="despesa">R$ 0,00</p>
+                    <p class="valor-detalhado" id="despesas">R$ 0,00</p>
                 </div>
                 <div class="a-pagar">
                     <p class="titulo-detalhado">A pagar</p>
@@ -200,11 +200,22 @@
                             <th class="atual-tabela">Atual</th>
                             <th class="total-tabela">Total</th>
                             <th class="valor-tabela">Valor</th>
+                            <th class="acao-tabela">Ação</th>
                         </tr>
                     </thead>
                     <tbody id="dadosParcelas">
                     </tbody>
                 </table>
+                <div class="fundo-modal-parcela oculto">
+                    <div class="caixa-confirmacao" id="caixaConfirmacaoParcela">
+                        <p class="titulo-modal-parcela">Excluir parcela</p>
+                        <p class="texto-modal-parcela">Deseja mesmo excluir a parcela?</p>
+                        <div class="acoes-modal">
+                            <button class="excluir-modal" id="btnExcluirModalParcela">Excluir</button>
+                            <button class="cancelar-modal" id="btnCancelarModalParcela">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
         <section class="guia-geral conteudo-guia" id="guia5">
