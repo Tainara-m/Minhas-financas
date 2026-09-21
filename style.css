@@ -611,3 +611,907 @@ footer{
     color: var(--text-muted);
     text-align: center;
 }
+
+/* =====================================================
+   ASSISTENTE
+   ===================================================== */
+
+.analise-assistente,
+.perguntas-assistente,
+.chat-assistente {
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: 20px;
+    padding: 20px;
+}
+
+
+/* ---------- Cabeçalhos internos ---------- */
+
+.analise-cabecalho,
+.titulo-secao-assistente {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.analise-cabecalho .material-symbols-outlined,
+.titulo-secao-assistente .material-symbols-outlined {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    background: var(--primary-light);
+    color: var(--primary);
+
+    border-radius: 12px;
+
+    cursor: default;
+}
+
+
+.titulo-assistente {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 3px;
+}
+
+
+.subtitulo-assistente {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+
+/* ---------- Análise do mês ---------- */
+
+.analise-assistente {
+    background:
+        linear-gradient(
+            135deg,
+            var(--surface),
+            var(--surface-secondary)
+        );
+}
+
+.analise-conteudo {
+    margin-top: 15px;
+
+    background: var(--info-bg);
+
+    border-left: 5px solid var(--secondary);
+
+    border-radius: 0 12px 12px 0;
+
+    padding: 15px;
+
+    color: var(--text-primary);
+
+    min-height: 70px;
+}
+
+
+/* ---------- Perguntas rápidas ---------- */
+
+.perguntas-assistente {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.perguntas-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.pergunta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    min-height: 55px;
+
+    padding: 12px 15px;
+
+    border: 1px solid var(--border);
+    border-radius: 15px;
+
+    background: var(--surface-secondary);
+    color: var(--text-primary);
+
+    font-family: var(--font-primary);
+    font-size: 0.85rem;
+    font-weight: 600;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.pergunta .material-symbols-outlined {
+    color: var(--secondary);
+    cursor: default;
+}
+
+.pergunta:hover {
+    background: var(--primary-light);
+    border-color: var(--primary);
+}
+
+.pergunta:active {
+    transform: scale(0.98);
+}
+
+
+/* ---------- Chat ---------- */
+
+.chat-assistente {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-assistente {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.campo-chat {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#perguntaAssistente {
+    flex: 1;
+
+    height: 42px;
+
+    border: 1px solid var(--input-border);
+    border-radius: 20px;
+
+    background: var(--input-bg);
+    color: var(--input-text);
+
+    font-family: var(--font-primary);
+
+    padding: 10px 15px;
+
+    outline: none;
+}
+
+#perguntaAssistente::placeholder {
+    color: var(--input-placeholder);
+}
+
+#perguntaAssistente:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+
+#enviarPergunta {
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    cursor: pointer;
+}
+
+#enviarPergunta .material-symbols-outlined {
+    width: auto;
+    height: auto;
+    color: inherit;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+
+/* ---------- Resposta do assistente ---------- */
+
+.resposta-assistente {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+
+    background: var(--surface-secondary);
+
+    border: 1px solid var(--border);
+
+    border-radius: 15px;
+
+    padding: 15px;
+}
+
+.resposta-assistente > .material-symbols-outlined {
+    color: var(--primary);
+    flex-shrink: 0;
+    cursor: default;
+}
+
+.mensagem-assistente {
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+
+/* ---------- Orientação ---------- */
+
+.orientacoes {
+    text-align: center;
+
+    font-size: 0.7rem;
+    line-height: 1.4;
+
+    color: var(--text-muted);
+
+    padding: 0 10px;
+}
+
+
+/* =====================================================
+   RESPONSIVIDADE GERAL
+   ===================================================== */
+
+/* ---------- BASE ---------- */
+
+html {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    width: 100%;
+    max-width: 1400px;
+    margin: 10px auto;
+    padding: 0 20px;
+}
+
+.content {
+    width: 100%;
+    min-width: 0;
+}
+
+img,
+svg,
+video {
+    max-width: 100%;
+    height: auto;
+}
+
+button,
+input,
+textarea,
+select {
+    max-width: 100%;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+/* =====================================================
+   DESKTOP GRANDE
+   ===================================================== */
+
+@media (min-width: 1200px) {
+
+    body {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+}
+
+
+/* =====================================================
+   NOTEBOOK / TABLET HORIZONTAL
+   ===================================================== */
+
+@media (max-width: 1100px) {
+
+    body {
+        margin: 10px auto;
+        padding: 0 20px;
+    }
+
+    /* Cabeçalho */
+
+    .top {
+        justify-content: space-between;
+    }
+
+
+    /* Formulários */
+
+    .form-dados {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(180px, 320px) auto;
+        gap: 10px;
+        align-items: center;
+    }
+
+
+    #descricaoReceita,
+    #descricaoDespesa,
+    #descricaoParcela,
+    #valorReceita,
+    #valorDespesa,
+    #parcelaAtual,
+    #parcelaTotal,
+    #valorParcela {
+        width: 100%;
+        max-width: none;
+    }
+
+
+    /* Parcelas */
+
+    #parcelas.form-dados {
+        grid-template-columns:
+            minmax(0, 1.5fr)
+            minmax(100px, 150px)
+            minmax(100px, 150px)
+            minmax(120px, 180px)
+            auto;
+    }
+
+
+    /* Tabelas */
+
+    .tabela-receitas,
+    .tabela-despesas,
+    .tabela-parcelas {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+}
+
+
+/* =====================================================
+   TABLET
+   ===================================================== */
+
+@media (max-width: 800px) {
+
+    body {
+        padding: 0 15px;
+    }
+
+
+    /* ---------- Cabeçalho ---------- */
+
+    .top {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .top h1 {
+        width: 100%;
+        text-align: center;
+    }
+
+    .mes-atual {
+        order: 2;
+    }
+
+    .tema-btn {
+        order: 3;
+    }
+
+
+    /* ---------- Resumo superior ---------- */
+
+    .resumo-geral {
+        padding: 15px;
+    }
+
+    #saldoMesAtual {
+        font-size: 1.7rem;
+    }
+
+    .detalhado {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .valor-detalhado {
+        font-size: 1.2rem;
+    }
+
+
+    /* ---------- Navegação ---------- */
+
+    .guia-container {
+        overflow-x: auto;
+        justify-content: flex-start;
+        white-space: nowrap;
+        scrollbar-width: thin;
+    }
+
+    .guia {
+        flex-shrink: 0;
+    }
+
+
+    /* ---------- Cards do resumo ---------- */
+
+    .parent {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+
+    /* ---------- Guias ---------- */
+
+    .guia-geral {
+        padding: 15px;
+        gap: 15px;
+    }
+
+
+    /* ---------- Formulários ---------- */
+
+    .form-dados {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .form-dados .botao-adicionar {
+        grid-column: 1 / -1;
+        width: 100%;
+    }
+
+
+    /* Parcelas */
+
+    #parcelas.form-dados {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #parcelas.form-dados label:first-child {
+        grid-column: 1 / -1;
+    }
+
+
+    /* ---------- Tabelas ---------- */
+
+    table {
+        min-width: 600px;
+    }
+
+    .tabela-receitas,
+    .tabela-despesas,
+    .tabela-parcelas {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+
+    /* ---------- Assistente ---------- */
+
+    .perguntas-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+
+/* =====================================================
+   CELULAR
+   ===================================================== */
+
+@media (max-width: 600px) {
+
+    body {
+        margin: 5px auto;
+        padding: 0 10px;
+    }
+
+
+    /* ---------- Cabeçalho ---------- */
+
+    .top {
+        padding: 8px 0;
+        gap: 10px;
+    }
+
+    .top h1 {
+        font-size: 1.3rem;
+    }
+
+    .mes-atual {
+        padding: 8px 12px;
+    }
+
+    #mes {
+        font-size: 0.9rem;
+    }
+
+
+    /* ---------- Resumo superior ---------- */
+
+    .resumo-geral {
+        padding: 15px;
+        border-radius: 15px;
+    }
+
+    .texto-saldo {
+        font-size: 0.85rem;
+    }
+
+    #saldoMesAtual {
+        font-size: 1.5rem;
+    }
+
+    .detalhado {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .detalhado > div {
+        padding: 5px 0;
+    }
+
+    .titulo-detalhado {
+        font-size: 0.8rem;
+    }
+
+    .valor-detalhado {
+        font-size: 1.1rem;
+    }
+
+
+    /* ---------- Navegação ---------- */
+
+    .guia-container {
+        justify-content: flex-start;
+        gap: 5px;
+        padding: 7px;
+        border-radius: 15px;
+    }
+
+    .guia {
+        font-size: 0.75rem;
+    }
+
+    .selecionada {
+        padding: 7px 10px;
+    }
+
+
+    /* ---------- Resumo ---------- */
+
+    .parent {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
+    .div-receita,
+    .div-despesa,
+    .div-saldo,
+    .div-a-pagar {
+        grid-area: auto;
+        padding: 15px;
+    }
+
+    .titulo-resumo {
+        font-size: 0.75rem;
+    }
+
+    .valor-resumo-card {
+        font-size: 1rem;
+    }
+
+
+    /* ---------- Títulos das guias ---------- */
+
+    .guia-geral {
+        padding: 12px;
+        border-radius: 15px;
+        gap: 12px;
+    }
+
+    h5 {
+        font-size: 1.25rem;
+    }
+
+    .descricao-guia {
+        font-size: 0.8rem;
+        line-height: 1.4;
+    }
+
+
+    /* ---------- Formulários ---------- */
+
+    .form-dados {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .form-dados label {
+        width: 100%;
+    }
+
+    #descricaoReceita,
+    #valorReceita,
+    #descricaoDespesa,
+    #valorDespesa,
+    #descricaoParcela,
+    #valorParcela,
+    #parcelaAtual,
+    #parcelaTotal {
+        width: 100%;
+        max-width: none;
+        height: 40px;
+    }
+
+    .form-dados .botao-adicionar {
+        width: 100%;
+        min-height: 40px;
+    }
+
+
+    /* ---------- Tabelas ---------- */
+
+    table {
+        min-width: 550px;
+    }
+
+    .tabela-receitas,
+    .tabela-despesas,
+    .tabela-parcelas {
+        width: 100%;
+        overflow-x: auto;
+        border-radius: 10px;
+    }
+
+    .texto-tabela,
+    .texto-tabela-despesas,
+    .texto-tabela-parcelas {
+        text-align: center;
+        line-height: 1.4;
+    }
+
+
+    /* ---------- Composição das despesas ---------- */
+
+    .titulo-guia {
+        padding: 10px;
+    }
+
+    .contas-cadastradas,
+    .parcelas-cadastradas {
+        flex-wrap: wrap;
+        gap: 5px;
+        padding: 10px;
+    }
+
+
+    /* ---------- Modais ---------- */
+
+    .caixa-confirmacao {
+        width: calc(100% - 30px);
+        max-width: 400px;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .acoes-modal {
+        width: 100%;
+        display: flex;
+        gap: 8px;
+    }
+
+    .acoes-modal button {
+        flex: 1;
+    }
+
+
+    /* ---------- Assistente ---------- */
+
+    .analise-assistente,
+    .perguntas-assistente,
+    .chat-assistente {
+        padding: 15px;
+        border-radius: 15px;
+    }
+
+    .perguntas-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pergunta {
+        width: 100%;
+    }
+
+    .campo-chat {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #perguntaAssistente {
+        width: 100%;
+        height: 42px;
+    }
+
+    #enviarPergunta {
+        width: 100%;
+        min-height: 42px;
+    }
+
+
+    /* ---------- Footer ---------- */
+
+    footer {
+        margin: 15px 5px;
+    }
+
+    .footer-message {
+        margin-top: 5px;
+    }
+
+}
+
+
+/* =====================================================
+   CELULARES PEQUENOS
+   ===================================================== */
+
+@media (max-width: 400px) {
+
+    body {
+        padding: 0 7px;
+    }
+
+
+    .top h1 {
+        font-size: 1.15rem;
+    }
+
+
+    .mes-atual {
+        gap: 5px;
+        padding: 7px 10px;
+    }
+
+
+    #saldoMesAtual {
+        font-size: 1.35rem;
+    }
+
+
+    .guia-container {
+        gap: 3px;
+    }
+
+
+    .guia {
+        font-size: 0.7rem;
+    }
+
+
+    .selecionada {
+        padding: 6px 8px;
+    }
+
+
+    .guia-geral {
+        padding: 10px;
+    }
+
+
+    h5 {
+        font-size: 1.15rem;
+    }
+
+
+    .div-receita,
+    .div-despesa,
+    .div-saldo,
+    .div-a-pagar {
+        padding: 12px;
+    }
+
+
+    .titulo-guia {
+        padding: 8px;
+    }
+
+
+    .contas-cadastradas,
+    .parcelas-cadastradas {
+        font-size: 0.8rem;
+    }
+
+
+    .pergunta {
+        font-size: 0.8rem;
+        padding: 10px;
+    }
+
+
+    .orientacoes {
+        font-size: 0.65rem;
+    }
+
+}
+
+
+/* =====================================================
+   ACESSIBILIDADE / TOUCH
+   ===================================================== */
+
+@media (hover: none) and (pointer: coarse) {
+
+    .botao-adicionar,
+    .pergunta,
+    .btn-excluir,
+    .btn-editar,
+    .btn-excluir-despesa,
+    .btn-editar-despesa,
+    .btn-excluir-parcelas,
+    .btn-editar-parcelas,
+    .status-pendente,
+    .status-pago {
+        min-height: 40px;
+    }
+
+}
+
+
+/* =====================================================
+   EVITAR OVERFLOW HORIZONTAL
+   ===================================================== */
+
+.content,
+.guia-geral,
+.conteudo-guia,
+.resumo-total,
+.resumo-geral,
+.guias {
+    max-width: 100%;
+    min-width: 0;
+}
+
+td,
+th {
+    word-break: break-word;
+}
+
+
+/* =====================================================
+   REDUÇÃO DE MOVIMENTO
+   ===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+
+}

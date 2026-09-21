@@ -1,262 +1,480 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR" data-theme="light">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Aplicativo de gerenciamento financeiro pessoal.">
-    <meta name="keywords" content="finanças, gerenciamento financeiro, orçamento pessoal, controle de gastos">
-    <meta name="author" content="Tainara Martins">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Aplicativo de gerenciamento financeiro pessoal."
+    />
+    <meta
+      name="keywords"
+      content="finanças, gerenciamento financeiro, orçamento pessoal, controle de gastos"
+    />
+    <meta name="author" content="Tainara Martins" />
     <title>Minhas Finanças</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet">
-    <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/icon/favicon-16x16.png">
-    <link rel="manifest" href="/icon/site.webmanifest">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/icon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/icon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/icon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/icon/site.webmanifest" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <main class="content">
-        <div class="top">
-            <h1 aria-label="Título da Página">Minhas Finanças</h1>
-            <div class="mes-atual">
-                <span class="material-symbols-outlined" id="setaMesAnterior">arrow_back_ios</span>
-                <h2 id="mes"></h2>
-                <span class="material-symbols-outlined" id="setaProximoMes">arrow_forward_ios</span>
-            </div>
-            <a class="tema-btn" id="theme-toggle" aria-label="Ativar tema escuro">
-                <span class="material-symbols-outlined tema" id="theme-icon" aria-hidden="true">light_mode</span>
-            </a>
+      <div class="top">
+        <h1 aria-label="Título da Página">Minhas Finanças</h1>
+        <div class="mes-atual">
+          <span class="material-symbols-outlined" id="setaMesAnterior"
+            >arrow_back_ios</span
+          >
+          <h2 id="mes"></h2>
+          <span class="material-symbols-outlined" id="setaProximoMes"
+            >arrow_forward_ios</span
+          >
         </div>
-        <section class="resumo-total">
+        <a class="tema-btn" id="theme-toggle" aria-label="Ativar tema escuro">
+          <span
+            class="material-symbols-outlined tema"
+            id="theme-icon"
+            aria-hidden="true"
+            >light_mode</span
+          >
+        </a>
+      </div>
+      <section class="resumo-total">
         <div class="resumo-geral">
-            <div class="saldo-mes-atual">
-                <p class="texto-saldo">Saldo do Mês Atual</p>
-                <p id="saldoMesAtual">R$ 0,00</p>
+          <div class="saldo-mes-atual">
+            <p class="texto-saldo">Saldo do Mês Atual</p>
+            <p id="saldoMesAtual">R$ 0,00</p>
+          </div>
+          <div class="detalhado">
+            <div class="receita">
+              <p class="titulo-detalhado">Receita</p>
+              <p class="valor-detalhado" id="receita">R$ 0,00</p>
             </div>
-            <div class="detalhado">
-                <div class="receita">
-                    <p class="titulo-detalhado">Receita</p>
-                    <p class="valor-detalhado" id="receita">R$ 0,00</p>
-                </div>
-                <div class="despesa">
-                    <p class="titulo-detalhado">Despesa</p>
-                    <p class="valor-detalhado" id="despesas">R$ 0,00</p>
-                </div>
-                <div class="a-pagar">
-                    <p class="titulo-detalhado">A pagar</p>
-                    <p class="valor-detalhado" id="aPagar">R$ 0,00</p>
-                </div>
+            <div class="despesa">
+              <p class="titulo-detalhado">Despesa</p>
+              <p class="valor-detalhado" id="despesas">R$ 0,00</p>
             </div>
+            <div class="a-pagar">
+              <p class="titulo-detalhado">A pagar</p>
+              <p class="valor-detalhado" id="aPagar">R$ 0,00</p>
+            </div>
+          </div>
         </div>
-    </section>
-        <div class="guias">
-        <nav class="guia-container" role="navigation" aria-label="Navegação entre guias">
-            <a href="#guia1"class="guia selecionada" aria-label="Resumo" onclick="alternarGuia(event, 'guia1')">Resumo</a>
-            <a href="#guia2" class="guia" aria-label="Receitas" onclick="alternarGuia(event, 'guia2')">Receitas</a>
-            <a href="#guia3" class="guia" aria-label="Despesas" onclick="alternarGuia(event, 'guia3')">Despesas</a>
-            <a href="#guia4" class="guia" aria-label="Parcelas" onclick="alternarGuia(event, 'guia4')">Parcelas</a>
-            <a href="#guia5" class="guia" aria-label="Assistente" onclick="alternarGuia(event, 'guia5')">Assistente</a>
+      </section>
+      <div class="guias">
+        <nav
+          class="guia-container"
+          role="navigation"
+          aria-label="Navegação entre guias"
+        >
+          <a
+            href="#guia1"
+            class="guia selecionada"
+            aria-label="Resumo"
+            onclick="alternarGuia(event, 'guia1')"
+            >Resumo</a
+          >
+          <a
+            href="#guia2"
+            class="guia"
+            aria-label="Receitas"
+            onclick="alternarGuia(event, 'guia2')"
+            >Receitas</a
+          >
+          <a
+            href="#guia3"
+            class="guia"
+            aria-label="Despesas"
+            onclick="alternarGuia(event, 'guia3')"
+            >Despesas</a
+          >
+          <a
+            href="#guia4"
+            class="guia"
+            aria-label="Parcelas"
+            onclick="alternarGuia(event, 'guia4')"
+            >Parcelas</a
+          >
+          <a
+            href="#guia5"
+            class="guia"
+            aria-label="Assistente"
+            onclick="alternarGuia(event, 'guia5')"
+            >Assistente</a
+          >
         </nav>
-    </div>
-        <section class="resumo-detalhado conteudo-guia ativa" id="guia1">
-            <div class="parent">
-            <div class="div-receita">
-                <p class="titulo-resumo">Receita</p>
-                <p id="valorResumoReceita" class="valor-resumo-card">R$0,00</p>
+      </div>
+      <section class="resumo-detalhado conteudo-guia ativa" id="guia1">
+        <div class="parent">
+          <div class="div-receita">
+            <p class="titulo-resumo">Receita</p>
+            <p id="valorResumoReceita" class="valor-resumo-card">R$0,00</p>
+          </div>
+          <div class="div-despesa">
+            <p class="titulo-resumo">Despesa</p>
+            <p id="valorResumoDespesa" class="valor-resumo-card">R$0,00</p>
+          </div>
+          <div class="div-saldo">
+            <p class="titulo-resumo">Saldo</p>
+            <p id="valorResumoSaldo" class="valor-resumo-card">R$0,00</p>
+          </div>
+          <div class="div-a-pagar">
+            <p class="titulo-resumo">A pagar</p>
+            <p id="valorResumoAPagar" class="valor-resumo-card">R$0,00</p>
+          </div>
+        </div>
+        <div class="titulo-guia">
+          <h4>O que compõe as despesas</h4>
+          <p class="descricao">
+            Contas cadastradas + total das parcelas do mês
+          </p>
+          <div class="contas-cadastradas" id="contasCadastradas">
+            <div class="titulo-cadastradas">Contas Cadastradas</div>
+            <div id="valorCadastradas" class="valor-resumo">R$0,00</div>
+          </div>
+          <div class="parcelas-cadastradas" id="parcelasCadastradas">
+            <div class="titulo-cadastradas">Parcelas do Mês</div>
+            <div id="valorParcelas" class="valor-resumo">R$0,00</div>
+          </div>
+        </div>
+      </section>
+      <section class="guia-geral conteudo-guia" id="guia2">
+        <div class="cabecalho-guia">
+          <h5>Receitas</h5>
+          <p class="descricao-guia">Tudo que entra esse mês</p>
+        </div>
+        <form action="" class="form-dados" id="entradas">
+          <label for="descricaoReceita">
+            <input
+              type="text"
+              name="descricao"
+              id="descricaoReceita"
+              placeholder="Ex.: Salário"
+              required
+            />
+          </label>
+          <label for="valorReceita">
+            <input
+              type="number"
+              name="valor"
+              id="valorReceita"
+              placeholder="Ex.: 1000,00"
+              required
+            />
+          </label>
+          <button class="botao-adicionar" id="adicionarReceita">
+            Adicionar
+          </button>
+        </form>
+        <div class="tabela-receitas" id="tabelaReceitas">
+          <p class="texto-tabela" id="textoTabela">
+            Nada por aqui ainda. Adicione o primeiro item abaixo.
+          </p>
+          <table class="tabela-entradas" id="tabelaEntradas">
+            <thead>
+              <tr>
+                <th class="titulo-tabela">Título</th>
+                <th class="valor-tabela">Valor</th>
+                <th class="acao-tabela">Ação</th>
+              </tr>
+            </thead>
+            <tbody id="dadosEntradas"></tbody>
+          </table>
+          <div class="fundo-modal oculto">
+            <div class="caixa-confirmacao" id="caixa-confirmacao">
+              <p class="titulo-modal">Excluir receita</p>
+              <p class="texto-modal">Deseja mesmo excluir a receita?</p>
+              <div class="acoes-modal">
+                <button class="excluir-modal" id="btnExcluirModal">
+                  Excluir
+                </button>
+                <button class="cancelar-modal" id="btnCancelarModal">
+                  Cencelar
+                </button>
+              </div>
             </div>
-            <div class="div-despesa">
-                <p class="titulo-resumo">Despesa</p>
-                <p id="valorResumoDespesa" class="valor-resumo-card">R$0,00</p>
-             </div>
-            <div class="div-saldo">
-                <p class="titulo-resumo">Saldo</p>
-                <p id="valorResumoSaldo" class="valor-resumo-card">R$0,00</p>
+          </div>
+        </div>
+      </section>
+      <section class="guia-geral conteudo-guia" id="guia3">
+        <div class="cabecalho-guia">
+          <h5>Despesas</h5>
+          <p class="descricao-guia">
+            Tudo que sai esse mês. Toque no status para marcar como pago
+          </p>
+        </div>
+        <form action="" class="form-dados" id="saidas">
+          <label for="descricaoDespesa">
+            <input
+              type="text"
+              name="descricao"
+              id="descricaoDespesa"
+              placeholder="Ex.: Aluguel"
+              required
+            />
+          </label>
+          <label for="valorDespesa">
+            <input
+              type="number"
+              name="valor"
+              id="valorDespesa"
+              placeholder="Ex.: 1000,00"
+              required
+            />
+          </label>
+          <button class="botao-adicionar" id="adicionarDespesa">
+            Adicionar
+          </button>
+        </form>
+        <div class="tabela-despesas">
+          <p class="texto-tabela-despesas" id="textoTabelaDespesas">
+            Nada por aqui ainda. Adicione o primeiro item abaixo.
+          </p>
+          <table class="tabela-despesas" id="tabelaDespesas">
+            <thead>
+              <tr>
+                <th class="titulo-tabela">Título</th>
+                <th class="valor-tabela">Valor</th>
+                <th class="status-tabela" id="statusDepesas">Status</th>
+                <th class="acao-tabela">Ação</th>
+              </tr>
+            </thead>
+            <tbody id="dadosDespesas"></tbody>
+          </table>
+          <div class="fundo-modal-despesa oculto">
+            <div class="caixa-confirmacao" id="caixaConfirmacaoDespesa">
+              <p class="titulo-modal-despesa">Excluir despesa</p>
+              <p class="texto-modal-despesa">Deseja mesmo excluir a despesa?</p>
+              <div class="acoes-modal">
+                <button class="excluir-modal" id="btnExcluirModalDespesa">
+                  Excluir
+                </button>
+                <button class="cancelar-modal" id="btnCancelarModalDespesa">
+                  Cencelar
+                </button>
+              </div>
             </div>
-            <div class="div-a-pagar">
-                <p class="titulo-resumo">A pagar</p>
-                <p id="valorResumoAPagar" class="valor-resumo-card">R$0,00</p>
+          </div>
+        </div>
+      </section>
+      <section class="guia-geral conteudo-guia" id="guia4">
+        <div class="cabecalho-guia">
+          <h5>Parcelas</h5>
+          <p class="descricao-guia">
+            Compras parceladas — o total entra automaticamente nas despesas
+          </p>
+        </div>
+        <form action="" class="form-dados" id="parcelas">
+          <label for="descricaoParcela">
+            <input
+              type="text"
+              name="descricao"
+              id="descricaoParcela"
+              placeholder="Ex.: Bicicleta"
+              required
+            />
+          </label>
+          <label for="parcelaAtual">
+            <input
+              type="number"
+              name="valor"
+              id="parcelaAtual"
+              placeholder="N° atual"
+              required
+            />
+          </label>
+          <label for="parcelaTotal">
+            <input
+              type="number"
+              name="valor"
+              id="parcelaTotal"
+              placeholder="Total"
+              required
+            />
+          </label>
+          <label for="valorParcela">
+            <input
+              type="number"
+              name="valor"
+              id="valorParcela"
+              placeholder="Ex.: 1000,00"
+              required
+            />
+          </label>
+          <button class="botao-adicionar" id="adicionarParcela">
+            Adicionar Parcela
+          </button>
+        </form>
+        <div class="tabela-parcelas">
+          <p class="texto-tabela-parcelas" id="textoTabelaParcelas">
+            Nenhuma parcela cadastrada esse mês.
+          </p>
+          <table class="tabela-parcelas" id="tabelaParcelas">
+            <thead>
+              <tr>
+                <th class="titulo-tabela">Título</th>
+                <th class="atual-tabela">Atual</th>
+                <th class="total-tabela">Total</th>
+                <th class="valor-tabela">Valor</th>
+                <th class="acao-tabela">Ação</th>
+              </tr>
+            </thead>
+            <tbody id="dadosParcelas"></tbody>
+          </table>
+          <div class="fundo-modal-parcela oculto">
+            <div class="caixa-confirmacao" id="caixaConfirmacaoParcela">
+              <p class="titulo-modal-parcela">Excluir parcela</p>
+              <p class="texto-modal-parcela">Deseja mesmo excluir a parcela?</p>
+              <div class="acoes-modal">
+                <button class="excluir-modal" id="btnExcluirModalParcela">
+                  Excluir
+                </button>
+                <button class="cancelar-modal" id="btnCancelarModalParcela">
+                  Cancelar
+                </button>
+              </div>
             </div>
+          </div>
+        </div>
+      </section>
+      <section class="guia-geral conteudo-guia" id="guia5">
+        <div class="cabecalho-guia">
+          <h5>Assistente</h5>
+          <p class="descricao-guia">
+            Analise seus dados e tire dúvidas sobre sua organização financeira.
+          </p>
+        </div>
+
+        <div class="analise-assistente" id="analiseDoMes">
+          <div class="analise-cabecalho">
+            <span class="material-symbols-outlined">insights</span>
+
+            <div>
+              <p class="titulo-assistente">Análise do mês</p>
+              <p class="subtitulo-assistente">
+                Um resumo da sua situação financeira.
+              </p>
             </div>
-            <div class="titulo-guia">
-                <h4>O que compõe as despesas</h4>
-                <p class="descricao">Contas cadastradas + total das parcelas do mês</p>
-                <div class="contas-cadastradas" id="contasCadastradas">
-                    <div class="titulo-cadastradas">Contas Cadastradas</div>
-                    <div id="valorCadastradas" class="valor-resumo">R$0,00</div>
-                </div>
-                <div class="parcelas-cadastradas" id="parcelasCadastradas">
-                    <div class="titulo-cadastradas">Parcelas do Mês</div>
-                    <div id="valorParcelas" class="valor-resumo">R$0,00</div>
-                </div>
+          </div>
+
+          <div class="analise-conteudo">
+            <!-- O JavaScript preencherá esta área -->
+          </div>
+        </div>
+
+        <div class="perguntas-assistente" id="perguntas">
+          <div class="titulo-secao-assistente">
+            <span class="material-symbols-outlined">lightbulb</span>
+
+            <div>
+              <p class="titulo-assistente">Perguntas rápidas</p>
+              <p class="subtitulo-assistente">
+                Escolha uma pergunta para começar.
+              </p>
             </div>
-        </section>
-        <section class="guia-geral conteudo-guia" id="guia2">
-            <div class="cabecalho-guia">
-            <h5>Receitas</h5>
-                <p class="descricao-guia">Tudo que entra esse mês</p>
+          </div>
+
+          <div class="perguntas-grid">
+            <button class="pergunta" id="pergunta1">
+              <span class="material-symbols-outlined">account_balance</span>
+              <span>Como está meu saldo?</span>
+            </button>
+
+            <button class="pergunta" id="pergunta2">
+              <span class="material-symbols-outlined">trending_up</span>
+              <span>Qual é minha maior despesa?</span>
+            </button>
+
+            <button class="pergunta" id="pergunta3">
+              <span class="material-symbols-outlined">savings</span>
+              <span>Como investir?</span>
+            </button>
+
+            <button class="pergunta" id="pergunta4">
+              <span class="material-symbols-outlined">analytics</span>
+              <span>Analise meu mês</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="chat-assistente">
+          <div class="titulo-secao-assistente">
+            <span class="material-symbols-outlined">chat</span>
+
+            <div>
+              <p class="titulo-assistente">Converse com seu assistente</p>
+              <p class="subtitulo-assistente">
+                Faça uma pergunta sobre suas finanças.
+              </p>
             </div>
-            <form action="" class="form-dados" id="entradas">
-                <label for="descricaoReceita">
-                    <input type="text" name="descricao" id="descricaoReceita" placeholder="Ex.: Salário" required>
-                </label>
-                <label for="valorReceita">
-                    <input type="number" name="valor" id="valorReceita" placeholder="Ex.: 1000,00" required>
-                </label>
-                <button class="botao-adicionar" id="adicionarReceita">Adicionar</button>
-            </form>
-            <div class="tabela-receitas" id="tabelaReceitas">
-                <p class="texto-tabela" id="textoTabela">Nada por aqui ainda. Adicione o primeiro item abaixo.</p>
-                <table class="tabela-entradas" id="tabelaEntradas">
-                    <thead>
-                        <tr>
-                            <th class="titulo-tabela">Título</th>
-                            <th class="valor-tabela">Valor</th>
-                            <th class="acao-tabela">Ação</th>
-                        </tr>
-                    </thead>
-                    <tbody id="dadosEntradas">
-                    </tbody>
-                </table>
-                <div class="fundo-modal oculto">
-                    <div class="caixa-confirmacao" id="caixa-confirmacao">
-                        <p class="titulo-modal">Excluir receita</p>
-                        <p class="texto-modal">Deseja mesmo excluir a receita?</p>
-                        <div class="acoes-modal">
-                            <button class="excluir-modal" id="btnExcluirModal">Excluir</button>
-                            <button class="cancelar-modal" id="btnCancelarModal">Cencelar</button>
-                        </div>
-                    </div>
-                </div>
+          </div>
+
+          <form class="form-assistente" id="chat">
+            <div class="campo-chat">
+              <input
+                type="text"
+                name="pergunta"
+                id="perguntaAssistente"
+                placeholder="Ex.: Quanto vou pagar este mês?"
+                autocomplete="off"
+              />
+
+              <button class="botao-adicionar" id="enviarPergunta" type="submit">
+                <span class="material-symbols-outlined">send</span>
+                Enviar
+              </button>
             </div>
-        </section>
-        <section class="guia-geral conteudo-guia" id="guia3">
-            <div class="cabecalho-guia">
-            <h5>Despesas</h5>
-                <p class="descricao-guia">Tudo que sai esse mês. Toque no status para marcar como pago</p>
+
+            <div class="resposta-assistente">
+              <span class="material-symbols-outlined">smart_toy</span>
+
+              <div
+                id="chatAssistente"
+                class="mensagem-assistente"
+                aria-live="polite"
+              >
+                Olá! Posso ajudar você a entender melhor suas finanças.
+              </div>
             </div>
-            <form action="" class="form-dados" id="saidas">
-                <label for="descricaoDespesa">
-                    <input type="text" name="descricao" id="descricaoDespesa" placeholder="Ex.: Aluguel" required>
-                </label>
-                <label for="valorDespesa">
-                    <input type="number" name="valor" id="valorDespesa" placeholder="Ex.: 1000,00" required>
-                </label>
-                <button class="botao-adicionar" id="adicionarDespesa">Adicionar</button>
-            </form>
-            <div class="tabela-despesas">
-                <p class="texto-tabela-despesas" id="textoTabelaDespesas">Nada por aqui ainda. Adicione o primeiro item abaixo.</p>
-                <table class="tabela-despesas" id="tabelaDespesas">
-                 <thead>
-                        <tr>
-                            <th class="titulo-tabela">Título</th>
-                            <th class="valor-tabela">Valor</th>
-                            <th class="status-tabela" id="statusDepesas">Status</th>
-                            <th class="acao-tabela">Ação</th>
-                        </tr>
-                    </thead>
-                    <tbody id="dadosDespesas">
-                    </tbody>
-                </table>
-                <div class="fundo-modal-despesa oculto">
-                    <div class="caixa-confirmacao" id="caixaConfirmacaoDespesa">
-                        <p class="titulo-modal-despesa">Excluir despesa</p>
-                        <p class="texto-modal-despesa">Deseja mesmo excluir a despesa?</p>
-                        <div class="acoes-modal">
-                            <button class="excluir-modal" id="btnExcluirModalDespesa">Excluir</button>
-                            <button class="cancelar-modal" id="btnCancelarModalDespesa">Cencelar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="guia-geral conteudo-guia" id="guia4">
-            <div class="cabecalho-guia">
-            <h5>Parcelas</h5>
-                <p class="descricao-guia">Compras parceladas — o total entra automaticamente nas despesas </p>
-            </div>
-            <form action="" class="form-dados" id="parcelas">
-                <label for="descricaoParcela">
-                    <input type="text" name="descricao" id="descricaoParcela" placeholder="Ex.: Bicicleta" required>
-                </label>
-                <label for="parcelaAtual">
-                    <input type="number" name="valor" id="parcelaAtual" placeholder="N° atual" required>
-                    </label>
-                <label for="parcelaTotal">
-                    <input type="number" name="valor" id="parcelaTotal" placeholder="Total" required>
-                    </label>
-                <label for="valorParcela">
-                    <input type="number" name="valor" id="valorParcela" placeholder="Ex.: 1000,00" required>
-                </label>
-                <button class="botao-adicionar" id="adicionarParcela">Adicionar Parcela</button>
-                </form>
-            <div class="tabela-parcelas">
-                <p class="texto-tabela-parcelas" id="textoTabelaParcelas">Nenhuma parcela cadastrada esse mês.</p>
-                <table class="tabela-parcelas" id="tabelaParcelas">
-                 <thead>
-                        <tr>
-                            <th class="titulo-tabela">Título</th>
-                            <th class="atual-tabela">Atual</th>
-                            <th class="total-tabela">Total</th>
-                            <th class="valor-tabela">Valor</th>
-                            <th class="acao-tabela">Ação</th>
-                        </tr>
-                    </thead>
-                    <tbody id="dadosParcelas">
-                    </tbody>
-                </table>
-                <div class="fundo-modal-parcela oculto">
-                    <div class="caixa-confirmacao" id="caixaConfirmacaoParcela">
-                        <p class="titulo-modal-parcela">Excluir parcela</p>
-                        <p class="texto-modal-parcela">Deseja mesmo excluir a parcela?</p>
-                        <div class="acoes-modal">
-                            <button class="excluir-modal" id="btnExcluirModalParcela">Excluir</button>
-                            <button class="cancelar-modal" id="btnCancelarModalParcela">Cancelar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="guia-geral conteudo-guia" id="guia5">
-            <div class="resumo-assistente">
-                <div class="titulo-guia">
-                    <p class=""titulo>Assistente Inteligente</p>
-                    <p class="subtitulo"> Analise seus dados e tire dúvidas sobre sua organização financeira.</p>
-                </div>
-                <div class="analise-do-mes" id="analiseDoMes">
-                </div>
-                <div class="perguntas" id="perguntas">
-                    <p class="titulo">Perguntas Rápidas</p>
-                    <div class="perguntas-topo">
-                        <button class="pergunta" id="pergunta1">Como está meu saldo do mês?</button>
-                        <button class="pergunta" id="pergunta2">Qual é a minha maior despesa?</button>
-                    </div>
-                    <div class="perguntas-rodape">
-                        <button class="pergunta" id="pergunta3">Como investir?</button>
-                        <button class="pergunta" id="pergunta4">Analise meu mês?</button>
-                    </div>
-                </div>
-                <div class="chat">
-                    <form action="" class="chat" id="chat">
-                    <textarea name="chat" id="chatAssistente" placeholder="Assistente: Como posso ajudar?" rols="40" columns="40"></textarea>
-                    <p class="subtitulo">Faça uma pergunta sobre suas finanças...</p>
-                    <label for="perguntaAssistente">
-                        <input type="text" name="pergunta" id="perguntaAssistente" placeholder="Digite sua pergunta aqui...">
-                    </label>
-                    <button class="botao-adicionar" id="enviarPergunta">Enviar</button> 
-                    </form>
-                </div>
-            <p class="orientacoes"> Use o assistente para obter insights sobre sua gestão financeira. As informações são de cunho orientativo.</p>
-            </div>
-        </section>
+          </form>
+        </div>
+
+        <p class="orientacoes">
+          As informações apresentadas pelo assistente são de caráter orientativo
+          e utilizam os dados cadastrados no aplicativo.
+        </p>
+      </section>
     </main>
     <footer class="footer">
-    <div class="footer-content">
+      <div class="footer-content">
         <p class="footer-text">Tainara Martins © 2026 Minhas Finanças</p>
-       <p class="footer-message">Organize hoje. Planeje amanhã.</p>
-        </div>
-</footer>
-<script src="script.js"></script>
-</body>
+        <p class="footer-message">Organize hoje. Planeje amanhã.</p>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
 </html>
